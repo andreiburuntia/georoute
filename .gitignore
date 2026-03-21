@@ -1,4 +1,6 @@
 *.html
+*.mmdb
+*.mmdb.gz
 build/
 *.spec
 .venv/

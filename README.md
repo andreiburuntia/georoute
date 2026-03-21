@@ -4,19 +4,19 @@ A Python CLI tool that wraps `traceroute`, resolves each hop to a physical locat
 
 ## Setup
 
-### 1. Install dependencies
+### 1. Download the GeoLite2 database
+
+```bash
+./download-db.sh
+```
+
+This downloads `GeoLite2-City.mmdb` from jsDelivr. Alternatively, download it manually from [MaxMind](https://www.maxmind.com/en/geolite2/signup) and place it in the project directory.
+
+### 2. Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
-
-### 2. Download the GeoLite2 database
-
-GeoTrace requires the **GeoLite2-City** database from MaxMind (free):
-
-1. Create an account at https://www.maxmind.com/en/geolite2/signup
-2. Navigate to **Download Databases** and download `GeoLite2-City.mmdb`
-3. Place the `.mmdb` file in the project directory (or pass its path via `--db`)
 
 ### 3. Ensure `traceroute` is installed
 
@@ -70,10 +70,10 @@ The `build.sh` script produces a self-contained binary with the GeoLite2 databas
 ```
 
 Binaries are written to `dist/`:
-- `dist/geotrace` — macOS (arm64)
-- `dist/geotrace-linux` — Linux (x86_64)
+- `dist/macos/geotrace` — macOS (arm64)
+- `dist/linux/geotrace` — Linux (aarch64)
 
-Prerequisites: Python 3, the `GeoLite2-City.mmdb` file in the project root, and Docker for the Linux build.
+The build script will auto-download the GeoLite2 database if missing. Docker is required for the Linux build.
 
 ## Output
 

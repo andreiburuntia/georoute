@@ -4,9 +4,8 @@ set -euo pipefail
 cd "$(dirname "$0")"
 
 if [ ! -f GeoLite2-City.mmdb ]; then
-    echo "Error: GeoLite2-City.mmdb not found in project directory."
-    echo "Download it from https://dev.maxmind.com/geoip/geolite2-free-geolocation-data"
-    exit 1
+    echo "GeoLite2-City.mmdb not found. Downloading..."
+    ./download-db.sh
 fi
 
 build_macos() {
@@ -19,10 +18,10 @@ build_macos() {
 
     source .venv/bin/activate
     pip install -q pyinstaller geoip2 folium
-    pyinstaller --onefile --name geotrace --add-data "GeoLite2-City.mmdb:." geotrace.py
+    pyinstaller --onefile --distpath dist/macos --name geotrace --add-data "GeoLite2-City.mmdb:." geotrace.py
     deactivate
 
-    echo "Done! macOS binary at dist/geotrace"
+    echo "Done! dist/macos/geotrace"
 }
 
 build_linux() {
@@ -43,9 +42,9 @@ DOCKERFILE
     docker run --rm \
         -v "$PWD":/src \
         geotrace-builder \
-        pyinstaller --onefile --name geotrace-linux --add-data "GeoLite2-City.mmdb:." geotrace.py
+        pyinstaller --onefile --distpath dist/linux --name geotrace --add-data "GeoLite2-City.mmdb:." geotrace.py
 
-    echo "Done! Linux binary at dist/geotrace-linux"
+    echo "Done! dist/linux/geotrace"
 }
 
 case "${1:-all}" in

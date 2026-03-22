@@ -1,4 +1,4 @@
-# GeoTrace - traceroute visualizer
+# GeoTrace - a super basic traceroute visualizer
 
 A Python CLI tool that wraps `traceroute`, resolves each hop to a physical location using MaxMind GeoLite2, and renders an interactive HTML map showing the route with per-leg latency annotations.
 
@@ -20,11 +20,11 @@ pip install -r requirements.txt
 
 ### 3. Ensure `traceroute` is installed
 
-- **macOS**: included by default
+- **macOS**: included into OS as `traceroute` by default
 - **Debian/Ubuntu**: `sudo apt install traceroute`
 - **Fedora/RHEL**: `sudo dnf install traceroute`
 
-**Note:** GeoTrace uses ICMP mode (`traceroute -I`) for reliable and fast results. ICMP requires root privileges, so the tool will automatically invoke `sudo` if not already running as root. You may be prompted for your password on first run.
+**Note:** GeoTrace uses ICMP mode (`traceroute -I`) for reliable and fast results. ICMP may require root privileges, so the tool will automatically invoke `sudo` if not already running as root. You may be prompted for your password on first run.
 
 ## Usage
 

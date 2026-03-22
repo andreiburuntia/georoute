@@ -2,6 +2,8 @@
 
 A Python CLI tool that wraps `traceroute`, resolves each hop to a physical location using MaxMind GeoLite2, and renders an interactive HTML map showing the route with per-leg latency annotations.
 
+*I made it and use it mostly to compare Mullvad's VPN server options and figure out IXP locations and overhead.*
+
 ## Setup
 
 ### 1. Download the GeoLite2 database

@@ -1,4 +1,4 @@
-# GeoTrace - a super basic traceroute visualizer
+# GeoTrace - yet another super basic traceroute map visualizer
 
 A Python CLI tool that wraps `traceroute`, resolves each hop to a physical location using MaxMind GeoLite2, and renders an interactive HTML map showing the route with per-leg latency annotations.
 
